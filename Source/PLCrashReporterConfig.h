@@ -73,30 +73,22 @@ typedef NS_ENUM(NSUInteger, PLCrashReporterSignalHandlerType) {
      * exception handler. Should the exceptions be handled by an existing handler, no report will be generated
      * by PLCrashReporter.
      *
-     * @par Mac OS X
-     *
-     * On Mac OS X, the Mach exception implementation is fully supported, using publicly available API -- note,
+     * @par On Mac OS X, the Mach exception implementation is fully supported, using publicly available API -- note,
      * however, that some kernel-internal constants, as well as architecture-specific trap information,
      * may be required to fully interpret a Mach exception's root cause.
      *
-     * @par iOS
-     *
-     * On iOS, the APIs required for a complete implementation are not fully public.
+     * @ par On iOS, the APIs required for a complete implementation are not fully public.
      *
      * The exposed surface of undocumented API usage is relatively low, and there has been strong user demand to
      * implement Mach exception handling regardless of concerns over API visiblity. Given this, we've included
      * Mach exception handling as an optional feature, with both build-time and runtime configuration
      * to disable its inclusion or use, respectively.
      *
-     * @par Debugger Incompatibility
-     *
-     * The Mach exception handler executes in-process, and will interfere with debuggers when they attempt to
+     * @ par The Mach exception handler executes in-process, and will interfere with debuggers when they attempt to
      * suspend all active threads (which will include the Mach exception handler). Mach-based handling
      * should not be used when a debugger is attached.
      *
-     * @par More Details
-     *
-     * For more information, refer to @ref mach_exceptions.
+     * @ par For more information, refer to @ref mach_exceptions.
      */
     PLCrashReporterSignalHandlerTypeMach = 1
 #endif /* PLCRASH_FEATURE_MACH_EXCEPTIONS */
